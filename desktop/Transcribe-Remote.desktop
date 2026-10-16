@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Transcribe (Remote)
+Comment=Transcribe audio/video (files or folders, recursive) via the LAN whisper-server
+# IMPORTANT: replace /home/USER with the absolute path where you put the script.
+# Example: Exec=python3 /home/you/whisper-server/transcribe-remote.py %F
+# Optionally set the server: Exec=env WHISPER_SERVER=http://<box-ip>:9000 python3 /home/USER/whisper-server/transcribe-remote.py %F
+Exec=python3 /home/USER/whisper-server/transcribe-remote.py %F
+Icon=audio-input-microphone
+Terminal=true
+Categories=AudioVideo;Utility;
+MimeType=inode/directory;audio/mpeg;audio/mp4;audio/x-m4a;audio/ogg;audio/wav;audio/x-wav;audio/flac;audio/x-flac;audio/webm;audio/aac;audio/opus;video/mp4;video/mpeg;video/quicktime;video/webm;video/x-matroska;

@@ -1,0 +1,20 @@
+[Unit]
+Description=Whisper transcription server (faster-whisper, CUDA) on :9000
+# Socket-activated: started on the first connection to whisper-server.socket,
+# and exits itself after WHISPER_IDLE_TIMEOUT seconds of no requests.
+Requires=whisper-server.socket
+After=whisper-server.socket network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/whisper-server
+EnvironmentFile=%h/whisper-server/whisper-server.env
+ExecStart=/usr/bin/env bash %h/whisper-server/run.sh
+# Clean idle-exit (code 0) must NOT trigger a restart — the socket relaunches
+# on the next request. Only restart if it actually crashed.
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=300
+
+# No [Install] section: the service is pulled in by the socket, not enabled
+# directly, so nothing runs until a request arrives.

@@ -1,0 +1,8 @@
+[Unit]
+Description=whisper-server socket (:9000) — activates the service on first request
+
+[Socket]
+ListenStream=0.0.0.0:9000
+
+[Install]
+WantedBy=sockets.target

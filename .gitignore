@@ -1,0 +1,17 @@
+# Python virtualenv (recreate with setup.sh)
+.venv/
+__pycache__/
+*.pyc
+
+# Real config holds the HF token — never commit it. Use whisper-server.env.example.
+whisper-server.env
+
+# Logs, backups, scratch
+*.log
+*.bak
+setup.log
+
+# Model weights live in the HF cache, never in the repo
+models/
+*.bin
+*.ct2
